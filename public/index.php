@@ -5,7 +5,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/../config/config.php";
 $url_arr = explode('/', $_SERVER['REQUEST_URI']);
 
 
-use app\models\{Product, User};
+use app\models\{Product, User, Item, Order};
 
 include "../engine/Autoload.php";
 
@@ -15,9 +15,11 @@ spl_autoload_register([new Autoload(), 'loadClass']);
 
 $product = new Product();
 $user = new User();
+$item = new Item();
+$order = new Order();
 
 //var_dump($product);
-//var_dump($user);
+var_dump($order);
 
 
 
