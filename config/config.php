@@ -5,10 +5,10 @@ define ('TEMPLATES_DIR', ROOT . '/templates/');
 define ('LAYOUTS_DIR', 'layouts/');
 define ("IMG_SMALL", $_SERVER['DOCUMENT_ROOT'] . "/img/small/");
 //    настройки базы данных
-define('HOST', 'localhost');
+define('HOST', 'course');
 define('USER', 'student');
 define('PASS', '123456');
-define('DB', 'gb');
+define('DB', 'mybase');
 //    подключаем файлы движка сайта
 include ROOT . "/engine/functions.php";
 include ROOT . "/engine/db.php";

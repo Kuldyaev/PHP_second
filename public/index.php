@@ -1,8 +1,26 @@
 <?php
 //   подключаем файл конфигурации
-include $_SERVER['DOCUMENT_ROOT'] . "/config/config.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/../config/config.php";
 //   читаем адресную строку
 $url_arr = explode('/', $_SERVER['REQUEST_URI']);
+
+
+use app\models\{Product, User};
+
+include "../engine/Autoload.php";
+
+spl_autoload_register([new Autoload(), 'loadClass']);
+
+
+
+$product = new Product();
+$user = new User();
+
+//var_dump($product);
+//var_dump($user);
+
+
+
 
 if ( $url_arr[1] == ""){
 	$page = 'index';
