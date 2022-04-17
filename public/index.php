@@ -1,27 +1,45 @@
 <?php
 //   подключаем файл конфигурации
 include $_SERVER['DOCUMENT_ROOT'] . "/../config/config.php";
-//   читаем адресную строку
-$url_arr = explode('/', $_SERVER['REQUEST_URI']);
+include $_SERVER['DOCUMENT_ROOT'] ."/../engine/Autoload.php";
 
-
-use app\models\{Product, User, Item, Order, Db};
-
-include "../engine/Autoload.php";
+use app\models\{Product, User, Item, Order};
+use app\engine\Database;
 
 spl_autoload_register([new Autoload(), 'loadClass']);
 
-$db = new Db();
 
-$product = new Product($db);
+$item = new Item("Собачка","Зовут Левонтий", "Очень хороший пёс", 125, 58, 10);
+
+
+
+
+var_dump($item->getAll());
+
 $user = new User();
-$item = new Item();
 $order = new Order();
 
 //var_dump($product);
-var_dump($order);
+
+die();
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   читаем адресную строку
+$url_arr = explode('/', $_SERVER['REQUEST_URI']);
 
 
 if ( $url_arr[1] == ""){
