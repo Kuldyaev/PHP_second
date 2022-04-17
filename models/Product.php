@@ -2,10 +2,15 @@
 
 namespace app\models;
 
-class Product 
+class Product extends Model
 {
     public $id;
     public $name;
     public $description;
     public $price;
+
+    protected function getTableName()
+    {
+        return 'products';
+    }
 }

@@ -2,9 +2,9 @@
 
 namespace app\models;
 
-//use app\engine\Db;
+use app\models\Db;
 
-//use app\interfaces\IModel;
+use app\interfaces\IModel;
 
 abstract class Model implements IModel
 {
