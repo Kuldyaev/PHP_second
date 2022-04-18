@@ -59,4 +59,17 @@ class Database
     {
         return $this->query($sql, $params)->rowCount();
     }
+
+    public function lastInsertId()
+    {
+        return $this->query("SELECT LAST_INSERT_ID()", $params = [])->fetch();
+    }
+
+    public function queryOneObject($sql, $params, $class)
+    {
+        $STH = $this->query($sql, $params);
+        //TODO сделать чтобы конструктор вызывался до извлечения из БД
+        $STH->setFetchMode(\PDO::FETCH_CLASS, $class);
+        return $STH->fetch();
+    }
 }
