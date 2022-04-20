@@ -36,13 +36,32 @@ abstract class DBModel extends Model
 
     public function update()
     {
-        //TODO сделать update в идеале оптимальный, формировать set только по изменившимся полям
+        $params = [];
+        $colums = [];
+
+        $tableName = static::getTableName();
+
+        foreach ($this->props as $key => $value) {
+            if (!$value) continue;
+            $params["{$key}"] = $this->$key;
+            $colums[] .= "`{$key}` = :{$key}";
+            $this->props[$key] = false;
+        }
+        $colums = implode(", ", $colums);
+        $params['id'] = $this->id;
+
+        $sql = "UPDATE `{$tableName}` SET {$colums} WHERE `id` = :id";
+        Db::getInstance()->execute($sql, $params);
+        return $this;
     }
 
     public function save()
     {
-        //TODO реализовать умный save
-        //if (???) $this->insert(); else $this->update();
+        if (is_null($this->id)) {
+            $this->insert();
+        } else {
+            $this->update();
+        }
     }
 
     public function delete()
@@ -58,7 +77,6 @@ abstract class DBModel extends Model
     {
         $tableName = static::getTableName();
         $sql = "SELECT * FROM {$tableName} WHERE id = :id";
-        //  return Db::getInstance()->queryOne($sql, ['id' => $id]);
         return Db::getInstance()->queryOneObject($sql, ['id' => $id], static::class);
     }
 
