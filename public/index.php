@@ -12,12 +12,6 @@ include  ROOT . "/engine/Autoload.php";
 
 spl_autoload_register([new Autoload(), 'loadClass']);
 
-
-
-$product = new Product("Пицца","Описание", 125);
-
-
-
 $controllerName = $_GET['c'] ?: 'product';
 $actionName = $_GET['a'];
 
@@ -29,11 +23,5 @@ if (class_exists($controllerClass)) {
 } else {
     die("Нет такого контроллера");
 }
-
-//$product = new Product();
-//$user = new User();
-
-//var_dump($product);
-//var_dump(ROOT . "/engine/Autoload.php");
 
 die();
