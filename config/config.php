@@ -14,4 +14,4 @@ define('HOST', 'course');
 define('USER', 'student');
 define('PASS', '123456');
 define('DB', 'mybase');
-
+//

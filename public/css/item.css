@@ -20,13 +20,13 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.itemInfo{
+.itemInfoInfo{
     width: 60%;
     padding: 10px;
     display: flex;
     flex-direction: column;
 }
-.buyBtn{
+.buyBtnItem{
     min-height: 50px;
     margin-top: 15px;
 }
