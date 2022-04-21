@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 07, 2022 at 11:09 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Хост: 127.0.0.1:3306
+-- Время создания: Апр 21 2022 г., 15:02
+-- Версия сервера: 5.5.62-log
+-- Версия PHP: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `gb`
+-- База данных: `mybase`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `current_cart`
+-- Структура таблицы `current_cart`
 --
 
 CREATE TABLE `current_cart` (
@@ -36,7 +36,7 @@ CREATE TABLE `current_cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `current_cart`
+-- Дамп данных таблицы `current_cart`
 --
 
 INSERT INTO `current_cart` (`id`, `cart_id`, `item_id`, `quantity`, `user`) VALUES
@@ -50,7 +50,7 @@ INSERT INTO `current_cart` (`id`, `cart_id`, `item_id`, `quantity`, `user`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `feedback`
+-- Структура таблицы `feedback`
 --
 
 CREATE TABLE `feedback` (
@@ -62,7 +62,7 @@ CREATE TABLE `feedback` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `feedback`
+-- Дамп данных таблицы `feedback`
 --
 
 INSERT INTO `feedback` (`id`, `goods_id`, `author`, `date`, `feedback`) VALUES
@@ -73,7 +73,7 @@ INSERT INTO `feedback` (`id`, `goods_id`, `author`, `date`, `feedback`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `goods`
+-- Структура таблицы `goods`
 --
 
 CREATE TABLE `goods` (
@@ -87,19 +87,27 @@ CREATE TABLE `goods` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `goods`
+-- Дамп данных таблицы `goods`
 --
 
 INSERT INTO `goods` (`id`, `name`, `s_describ`, `f_describ`, `price`, `quantity`, `q_limit`) VALUES
 (1, 'Камера белая 1', 'Очень интересный вариант. Подходит для помещений.', 'Бла-бла-бла', 1200, 5, 2),
 (2, 'Камера черная 1', 'Подходит для помещений. Наблюдение в гараж, на производство.', 'Бла-бла-бла', 1250, 15, 2),
 (3, 'Камера настольная.', 'Удобна для установки на полку и размещения на столе.', 'Бла-бла-бла', 2100, 3, 2),
-(4, 'Камера настенная', 'Рыбий глаз, большой обзор, монтаж на стену', 'Бла-бла-бла', 1800, 1, 4);
+(4, 'Камера настенная', 'Рыбий глаз, большой обзор, монтаж на стену', 'Бла-бла-бла', 1800, 1, 4),
+(5, 'Камера универсальная', 'Подходит для монтажа в бытовых и производственных промещениях', 'Бла-бла-бла', 2850, 54, 5),
+(6, 'Камера с WI-Fi доступом.', 'Монтаж на стену. WI-Fi.', 'Бла-бла-бла', 3000, 10, 5),
+(7, 'Ретро камера', 'Камера видеонаблюдения в ретро-стиле', 'Бла-бла-бла', 4000, 2, 1),
+(8, 'Стильная камера', 'Настольная стильная камера', 'Бла-бла-бла', 1780, 54, 10),
+(9, 'Yandex-станция мини', 'Яндекс.Станция — умная колонка с Алисой внутри', 'Яндекс.Станция с Алисой станет центром умного дома и добавит немного магии в привычные дела: зажигать свет и включать кофеварку можно простыми голосовыми командами.', 6000, 12, 3),
+(10, 'Станция от Amazon', 'Станция с голосовым помощником Alexa', 'Крутая станция, но не уверен, что будет работать в РФ', 8000, 3, 1),
+(11, 'Умная колонка Apple', 'Умная колонка Apple HomePod mini, white', 'сенсорное управление на верхней части колонки, со световым эффектом', 17000, 3, 1),
+(12, 'Сенсорный экран', 'Сенсорный экран для контроля доступа системы \"Умный дом\"', 'Бла-бла-бла', 6500, 3, 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `imgs`
+-- Структура таблицы `imgs`
 --
 
 CREATE TABLE `imgs` (
@@ -110,7 +118,7 @@ CREATE TABLE `imgs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `imgs`
+-- Дамп данных таблицы `imgs`
 --
 
 INSERT INTO `imgs` (`id`, `title`, `way`, `views`) VALUES
@@ -125,7 +133,7 @@ INSERT INTO `imgs` (`id`, `title`, `way`, `views`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Структура таблицы `orders`
 --
 
 CREATE TABLE `orders` (
@@ -139,7 +147,7 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `orders`
+-- Дамп данных таблицы `orders`
 --
 
 INSERT INTO `orders` (`id`, `user`, `items`, `amount`, `open_date`, `close_date`, `status`) VALUES
@@ -151,7 +159,7 @@ INSERT INTO `orders` (`id`, `user`, `items`, `amount`, `open_date`, `close_date`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders_status`
+-- Структура таблицы `orders_status`
 --
 
 CREATE TABLE `orders_status` (
@@ -160,7 +168,7 @@ CREATE TABLE `orders_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `orders_status`
+-- Дамп данных таблицы `orders_status`
 --
 
 INSERT INTO `orders_status` (`id`, `name`) VALUES
@@ -172,7 +180,28 @@ INSERT INTO `orders_status` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Структура таблицы `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `name` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `description`, `price`) VALUES
+(5, 'Nikitos', 'son', 56464534),
+(6, 'Nata', 'wife', 216531);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `roles`
 --
 
 CREATE TABLE `roles` (
@@ -184,7 +213,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `roles`
+-- Дамп данных таблицы `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`, `can_read`, `can_write`, `can_edit`) VALUES
@@ -195,7 +224,7 @@ INSERT INTO `roles` (`id`, `name`, `can_read`, `can_write`, `can_edit`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Структура таблицы `users`
 --
 
 CREATE TABLE `users` (
@@ -209,7 +238,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Дамп данных таблицы `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `lastname`, `email`, `role`, `password`, `hash`) VALUES
@@ -218,11 +247,11 @@ INSERT INTO `users` (`id`, `name`, `lastname`, `email`, `role`, `password`, `has
 (3, 'Leo', 'Velikiy', 'leopold@velikiy.ru', 3, '$1$ria3xshq$eIIiktPZqH4mxxLnPZQKV.', '1652674142624f4dc8b71a45.64646876');
 
 --
--- Indexes for dumped tables
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `current_cart`
+-- Индексы таблицы `current_cart`
 --
 ALTER TABLE `current_cart`
   ADD PRIMARY KEY (`id`),
@@ -230,30 +259,30 @@ ALTER TABLE `current_cart`
   ADD KEY `user` (`user`);
 
 --
--- Indexes for table `feedback`
+-- Индексы таблицы `feedback`
 --
 ALTER TABLE `feedback`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `feedback` (`feedback`(768)),
+  ADD KEY `feedback` (`feedback`(191)),
   ADD KEY `goods_id` (`goods_id`),
-  ADD KEY `feedback_2` (`feedback`(768)),
+  ADD KEY `feedback_2` (`feedback`(191)),
   ADD KEY `goods_id_2` (`goods_id`),
   ADD KEY `goods_id_3` (`goods_id`);
 
 --
--- Indexes for table `goods`
+-- Индексы таблицы `goods`
 --
 ALTER TABLE `goods`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `imgs`
+-- Индексы таблицы `imgs`
 --
 ALTER TABLE `imgs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders`
+-- Индексы таблицы `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
@@ -261,107 +290,38 @@ ALTER TABLE `orders`
   ADD KEY `status` (`status`);
 
 --
--- Indexes for table `orders_status`
+-- Индексы таблицы `orders_status`
 --
 ALTER TABLE `orders_status`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `roles`
+-- Индексы таблицы `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `name` (`name`),
-  ADD KEY `role` (`role`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `current_cart`
---
-ALTER TABLE `current_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
---
--- AUTO_INCREMENT for table `feedback`
---
-ALTER TABLE `feedback`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `goods`
+-- AUTO_INCREMENT для таблицы `goods`
 --
 ALTER TABLE `goods`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `imgs`
+-- AUTO_INCREMENT для таблицы `products`
 --
-ALTER TABLE `imgs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
--- AUTO_INCREMENT for table `orders_status`
---
-ALTER TABLE `orders_status`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `roles`
---
-ALTER TABLE `roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `current_cart`
---
-ALTER TABLE `current_cart`
-  ADD CONSTRAINT `item` FOREIGN KEY (`item_id`) REFERENCES `goods` (`id`),
-  ADD CONSTRAINT `user` FOREIGN KEY (`user`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD CONSTRAINT `id_goods` FOREIGN KEY (`goods_id`) REFERENCES `goods` (`id`);
-
---
--- Constraints for table `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `status` FOREIGN KEY (`status`) REFERENCES `orders_status` (`id`),
-  ADD CONSTRAINT `user_name` FOREIGN KEY (`user`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `role` FOREIGN KEY (`role`) REFERENCES `roles` (`id`);
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
