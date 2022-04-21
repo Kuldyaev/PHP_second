@@ -15,7 +15,7 @@ class ProductController extends Controller
     {
         $page = $_GET['page'] ?? 0;
 
-        $catalog = Product::getLimit(($page + 1) * 2);
+        $catalog = Product::getLimit(($page + 1) * 5);
         echo $this->render('product/catalog',[
             'catalog' => $catalog,
             'page' => ++$page
