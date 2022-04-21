@@ -24,5 +24,7 @@
     <?php endforeach;?>
 </div>
 <div class="moreBtn center" style="width:100%">
-<a href="/?c=product&a=catalog&page=<?=$page?>">Еще</a>
+    <a href="/?c=product&a=catalog&page=<?=$page?>" style="text-decoration:none;">
+        <div class="buy center" style="color:black">Показать больше</div>
+    </a>
 </div>
