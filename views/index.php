@@ -1,1 +1,3 @@
-Добро пожаловать!
+<div class="cardDesk center">
+    Добро пожаловать!
+</div>
