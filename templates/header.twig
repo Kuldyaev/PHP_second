@@ -11,12 +11,12 @@
         <div class="cartPlace">
             <a href="/?c=cart&a=show"><button>Cart</button></a>    
         </div>
-        <div class="regPlace" style="margin-left:10px">    
-            <?if ($auth) :?>
-                <a href="/?logout"><button id='outBtn'>LogOut</button></a>
-            <? else :?>
-                <a href="/login"><button>LogIn</button></a>
-            <? endif; ?>
+        <div class="regPlace" style="margin-left:10px">   
+            {% if isAuth  %}
+                <a href="?c=user&a=logout"><button id='outBtn'>LogOut</button></a>
+            {% else %}
+                <a href="?c=user&a=loginform"><button>LogIn</button></a>
+            {% endif %}
         </div>
     </div>     
 </header>

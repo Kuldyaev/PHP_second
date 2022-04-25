@@ -9,7 +9,7 @@ use app\engine\Autoload;
 use app\models\{Product, User};
 use app\engine\Render;
 use app\engine\TwigRender;
-
+// запускаем автозагрузчики
 include  ROOT . "/engine/Autoload.php";
 require_once ROOT . '/vendor/autoload.php';
 
