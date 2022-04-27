@@ -16,7 +16,6 @@ class TwigRender implements IRender
 
     public function renderTemplate($template, $params = [])
     {
-
         return $this->twig->render($template . '.twig', $params);
     }
 }
