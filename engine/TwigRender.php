@@ -6,10 +6,17 @@ use app\interfaces\IRender;
 
 class TwigRender implements IRender
 {
-    public function renderTemplate($template, $params = [])
+    protected $twig;
+
+    public function __construct()
     {
         $loader = new \Twig\Loader\FilesystemLoader('../templates');
-        $twig = new \Twig\Environment($loader);
-        return $twig->render('index.twig', ['name' => 'Fabien']);
+        $this->twig = new \Twig\Environment($loader);
+    }
+
+    public function renderTemplate($template, $params = [])
+    {
+
+        return $this->twig->render($template . '.twig', $params);
     }
 }

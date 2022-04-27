@@ -80,3 +80,7 @@ ul{
 .leftpart{
     margin-right: 10px;
 }
+.loginFormDesk{
+    min-height: 300px;
+    width: 100vw;
+}

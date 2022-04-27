@@ -10,7 +10,6 @@ use app\models\{Product, User};
 use app\engine\Render;
 use app\engine\TwigRender;
 
-
 include  ROOT . "/engine/Autoload.php";
 require_once ROOT . '/vendor/autoload.php';
 

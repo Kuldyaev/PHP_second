@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\engine\Render;
 use app\interfaces\IRender;
+use app\models\User;
 
 class Controller
 {
@@ -32,8 +33,8 @@ class Controller
     public function render($template, $params = [])
     {
         return $this->renderTemplate('layouts/main', [
-            'header' => $this->renderTemplate('header', $params),
-            'menu' => $this->renderTemplate('menu', $params),
+            'header' => $this->renderTemplate('header', ['isAuth' => User::isAuth()]),
+            'menu' => $this->renderTemplate('menu', ['user' => User::getName()]),
             'content' => $this->renderTemplate($template, $params),
             'footer' => $this->renderTemplate('footer', $params)
         ]);
