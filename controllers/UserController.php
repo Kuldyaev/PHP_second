@@ -4,14 +4,17 @@ namespace app\controllers;
 
 use app\models\Product;
 use app\models\User;
+use app\engine\Request;
+use app\engine\Session;
+
 
 class UserController extends Controller
 {
     public function actionLoginform()
     {
         $post = '';
-        if(isset($_POST['login'])){
-            $login = $_POST['login'];
+        if(isset((new Request())->getParams()['login'])){
+            $login = (new Request())->getParams()['login'];
             if (User::Auth($login)) {
                 header("Location: /");
                 die();
@@ -32,8 +35,9 @@ class UserController extends Controller
 
     public function actionLogout()
     {
-        session_regenerate_id();
-        session_destroy();
+        $session = new Session();
+        $session->regenerate();
+        $session->destroy();
         header("Location: /");
         die();
     }

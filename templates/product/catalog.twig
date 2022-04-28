@@ -4,11 +4,11 @@
 <div class="cardDesk">
     {% for item in catalog %}
         <div class="itemCard">
-        <a href="/?c=product&a=card&id={{ item.id }}" class="itemLink">
-                <img src="images/imgs_goods_300/{{ item.id }}.jpg" alt="small img" class="imgimg">
+        <a href="/product/card/?id={{ item.id }}" class="itemLink">
+                <img src="/images/imgs_goods_300/{{ item.id }}.jpg" alt="small img" class="imgimg">
             </a>
             <div class="itemInfo  center">
-                <a href="/?c=product&a=card&id={{ item.id }}" class="itemLink">
+                <a href="/product/card/?id={{ item.id }}" class="itemLink">
                     <div class="itemName">
                         {{ item.name }}
                     </div>
@@ -17,14 +17,45 @@
                     </div>
                 </a>
                 <div class="buyBtn">
-                    <button class="buy" data-itemid={{ item.id }}>BUY</button>
+                    <button class="buy" data-itemid={{ item.id }} data-session={{ session }}>BUY</button>
                 </div>        
             </div>
         </div>
     {% endfor %}
 </div>
 <div class="moreBtn center" style="width:100%">
-    <a href="/?c=product&a=catalog&page={{ page }}" style="text-decoration:none;">
-        <div class="buy center" style="color:black">Показать больше</div>
+    <a href="/product/catalog/?page={{ page }}" style="text-decoration:none;">
+        <div class="morePage center" style="color:black; background-color:grey; padding: 10px;">Показать больше</div>
     </a>
 </div>
+
+<script>
+    const btns = document.querySelectorAll('.buy');
+    btns.forEach(btn => {
+        const id = btn.dataset.itemid;
+        const cart = btn.dataset.session;
+        btn.addEventListener('click', function(e){
+            const data ={
+                operand1: id,
+                operand2: cart,
+                operation: "addItemToCart"
+            };
+            (async()=>{
+                fetch("/cart/add", {
+                    method: 'POST', 
+                    headers: new Headers({'Content-Type': 'application/json'}),
+                    body: JSON.stringify(data)
+                    })
+                    .then(responce => responce.json())
+                    .then(result =>{
+                        if(result.result === "add" && result.operation === "addItemToCart"){
+                        alert("Товар добавлен в корзину");
+                        }
+                        if(result.result === "ok" && result.operation === "addItemToCart"){
+                        alert("Этот товар уже в корзине");
+                        }
+                    })
+            })();
+        })
+    })
+</script>

@@ -48,7 +48,7 @@ class Db
     }
 
     //sql = "SELECT * FROM `products` WHERE id = :id" $params = ['id'=>1]
-    private function query($sql, $params)
+    public function query($sql, $params)
     {
         $STH = $this->getConnection()->prepare($sql);
         $STH->execute($params);

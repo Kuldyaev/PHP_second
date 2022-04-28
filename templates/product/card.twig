@@ -11,7 +11,7 @@
                <h4><i>Цена:  {{ product.price }} руб. </i></h4> 
             </div>
             <div class="buyBtn">
-                <button class="buy" id="buyBtnItem" data-itemid={{ product.id }} ><b>BUY</b></button>
+                <button class="buy" id="buyBtnItem" data-itemid={{ product.id }} data-session={{ session }}><b>BUY</b></button>
             </div>
             <h5>Описание товара:</h5> 
             <div class="itemDescription">
@@ -20,3 +20,30 @@
         </div>
     </div>
 </div>
+
+<script>
+    const btn = document.getElementById('buyBtnItem');
+    btn.addEventListener('click', function(e){
+        const data ={
+            operand1: btn.dataset.itemid,
+            operand2: btn.dataset.session,
+            operation: "addItemToCart"
+        };
+        (async()=>{
+            fetch("/cart/add", {
+                  method: 'POST', 
+                  headers: new Headers({'Content-Type': 'application/json'}),
+                  body: JSON.stringify(data)
+                  })
+                  .then(responce => responce.json())
+                  .then(result =>{
+                    if(result.result === "add" && result.operation === "addItemToCart"){
+                       alert("Товар добавлен в корзину");
+                    }
+                    if(result.result === "ok" && result.operation === "addItemToCart"){
+                       alert("Этот товар уже в корзине");
+                    }
+                  })
+         })();
+    });
+</script>

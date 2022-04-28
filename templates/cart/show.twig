@@ -1,0 +1,44 @@
+<div class="card">
+    <ul class="cartList" id="myList"> 
+        {% for item in cart %}
+            <li id="item{{ item.good_id }}" data-line={{ item.good_id }} data-id={{ item.good_id }}>
+                <div class="itenImg">
+                    <a href="/product/card/?id={{ item.good_id }}" class="imglink"><img src="/images/imgs_goods_300/{{ item.good_id }}.jpg" alt="small img" class="imgimg imgimg77"></a>
+                </div>
+                <div class="itemTitle center h100 ">
+                    <a href="/product/card/?id={{ item.good_id }}" class="imglink title">{{ item.name }}</a>
+                </div>
+                <div class="priceBlock">
+                    <h5>цена за ед.</h5> 
+                    <div  class="center h70"> 
+                    <a href="/product/card/?id={{ item.good_id }}" class="imglink title">{{ item.price }} руб.</a>
+                    </div>
+                </div>
+                <div class="quantityBlock">
+                    <h5 class="center">количество</h5>
+                    <div  class="center h70">
+                        <div class="center h70">
+                        <img src="/images/less.png" alt="delete item" class="qBtns less" data-index={{ item.good_id }}  data-quantity={{ item.quantity }} id="less{{ item.good_id }}" data-session={{ session }}>
+                        </div>
+                        <div class="center h70">
+                        <p id="quantity{{ item.good_id }}">{{ item.quantity }}</p><p>&nbsp;шт.</p>
+                        </div>
+                        <div class="center h70">
+                        <img src="/images/more.png" alt="delete item" class="qBtns more" data-index={{ item.good_id }} data-session={{ session }}>
+                        </div>   
+                    </div>
+                </div>
+                <div class="quantityBlock">
+                    <h5 class="center">всего</h5>
+                    <div  class="center h70"> 
+                        <p id="sum{{ item.good_id }}" data-price={{ item.price }}><?=$item['quantity']*$item['price']?></p><p>&nbsp;руб.</p>
+                    </div>
+                </div>
+                <div class="deleteBlock h100 center" >
+                    <img src="/images/delete.png" alt="delete item" class="delete" data-index={{ item.good_id }} data-line={{ item.id }} data-session={{ session }}>
+                </div>
+            </li>
+        {% endfor %}  
+    </ul> 
+</div>
+

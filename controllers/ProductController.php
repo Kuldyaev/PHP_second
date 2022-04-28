@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\Product;
+use app\engine\Request;
+use app\engine\Session;
 
 class ProductController extends Controller
 {
@@ -13,24 +15,24 @@ class ProductController extends Controller
 
     public function actionCatalog()
     {
-        $page = $_GET['page'] ?? 0;
-        $session = $_SESSION['login'];
+        $page = (new Request())->getParams()['page'] ?? 0;
 
         $catalog = Product::getLimit(($page + 1) * 5);
         echo $this->render('product/catalog',[
             'catalog' => $catalog,
             'page' => ++$page,
-            'session' => $session
+            'session' => (new Session())->getId() 
         ]);
     }
 
     public function actionCard()
     {
-        $id = $_GET['id'];
+        $id = (new Request())->getParams()['id'];
         $product = Product::getOne($id);
 
         echo $this->render('product/card', [
-            'product' => $product
+            'product' => $product,
+            'session' => (new Session())->getId() 
         ]);
     }
 }

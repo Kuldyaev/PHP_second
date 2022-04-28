@@ -31,7 +31,7 @@ class User extends DBModel
     }
 
     public static function Auth($login) {
-        $_SESSION['login'] = $login;
+        (new Session())->set('login',  $login);
         return true;
      }
 
@@ -40,7 +40,7 @@ class User extends DBModel
     }
 
     public static function getName() {
-        return $_SESSION['login'];
+        return (new Session())->get('login');
     }
 
     protected static function getTableName()
