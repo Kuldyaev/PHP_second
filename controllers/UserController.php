@@ -13,8 +13,9 @@ class UserController extends Controller
     public function actionLoginform()
     {
         $post = '';
-        if(isset((new Request())->getParams()['login'])){
+        if(isset((new Request())->getParams()['login']) && isset((new Request())->getParams()['pass'])){
             $login = (new Request())->getParams()['login'];
+            $pass = (new Request())->getParams()['pass'];
             if (User::Auth($login)) {
                 header("Location: /");
                 die();

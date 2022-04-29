@@ -17,10 +17,13 @@ class CartController extends Controller
     public function actionShow()
     {
         $session = (new Session())->getId();
+        $cart = new Cart();
 
         echo $this->render('cart/show', [
             'session' => $session,
-            'cart' => (new Cart())->getCartBySession($session)
+            'cart' => $cart->getCartBySession($session),
+            'isEmpty' => $cart->cartIsEmpty($session),
+            'positions' =>$cart->positionsIncart($session) 
         ]);
     }
 

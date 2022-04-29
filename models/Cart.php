@@ -41,6 +41,18 @@ class Cart extends DBModel
         return $result;
     }
 
+    public function positionsIncart($session_id) {
+        return count($this->getCartBySession($session_id));
+    }
+
+    public function cartIsEmpty($session_id) {
+        $result = true;
+        if($this->positionsIncart($session_id) > 0){
+            $result = false;
+        } 
+        return $result;
+    }
+
     public static function removeItemFromCart($id, $session_id) {
         $sql = "DELETE FROM current_cart WHERE cart_id = :session_id AND id = :id";
         return Db::getInstance()->execute($sql, ['session_id' => $session_id, 'id' => $id]);
