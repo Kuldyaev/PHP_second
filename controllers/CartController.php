@@ -41,4 +41,18 @@ class CartController extends Controller
     
         echo json_encode($responce);
     }
+
+    public function actionDelete()
+    {
+        $data = (new Request())->getParams();
+    
+        Cart::removeItemFromCart($data['operand1'], $data['operand2']);
+        
+        $responce['operand1'] = $data['operand1'];
+        $responce['operand2'] = $data['operand2'];
+        $responce['result'] = 'ok';
+        $responce['operation'] = $data['operation'];
+    
+        echo json_encode($responce);
+    }
 }

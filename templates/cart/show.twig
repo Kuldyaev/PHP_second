@@ -42,3 +42,32 @@
     </ul> 
 </div>
 
+<script>
+   let deleteBtns = document.querySelectorAll('.delete');
+   deleteBtns.forEach(btn => {
+      btn.addEventListener('click', function(e){
+         const data ={
+            operand1: btn.dataset.line,
+            operand2: btn.dataset.session,
+            operation: "deleteInCart"
+         };
+         (async()=>{
+            fetch("/cart/delete", {
+                  method: 'POST', 
+                  headers: new Headers({'Content-Type': 'application/json'}),
+                  body: JSON.stringify(data)
+                  })
+                  .then(responce => responce.json())
+                  .then(result =>{
+                     if(result.result === "ok" && result.operation === "deleteInCart"){
+                        const myIndex = "item" + String(btn.dataset.index);
+                        document.getElementById(myIndex).remove();
+                        checkSum();
+                     }
+                  })
+         })();
+      });
+   });
+
+   
+</script>

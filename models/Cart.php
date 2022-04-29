@@ -41,6 +41,11 @@ class Cart extends DBModel
         return $result;
     }
 
+    public static function removeItemFromCart($id, $session_id) {
+        $sql = "DELETE FROM current_cart WHERE cart_id = :session_id AND id = :id";
+        return Db::getInstance()->execute($sql, ['session_id' => $session_id, 'id' => $id]);
+    }
+
     public static function getTableName()
     {
         return 'current_cart';
